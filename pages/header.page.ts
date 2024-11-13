@@ -6,6 +6,7 @@ import { Page, Locator } from 'playwright';
 export class HeaderPage {
     private page: Page;
 
+    public loginOrRegister: Locator;
     // Locators for links
     public auctionsLink: Locator;
     public buyLink: Locator;
@@ -18,6 +19,8 @@ export class HeaderPage {
 
     constructor(page: Page) {
         this.page = page;
+
+        this.loginOrRegister = this.page.locator('role=button[name="Login or Register"]');
 
         // Initialize locators for each menu item
         this.auctionsLink = this.page.locator('role=link[name="Auctions"]');

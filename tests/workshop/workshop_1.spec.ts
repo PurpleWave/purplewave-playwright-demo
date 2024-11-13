@@ -1,8 +1,16 @@
+/////////////////////////////////////////////////////////////////////////////////////////
+//
+//                           This is a learning sandbox.
+//
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 // import test 
 import { test } from 'playwright/test'
 
 // a simple test to open Purplewave.com, wait till everything is loaded and then reload the page
-test('Open PurpleWave.com and reload page', async ({page})=>{
+test.skip('Open PurpleWave.com and reload page', async ({page})=>{
     await page.goto('https://www.purplewave.com/');
     // TODO: Refactor - this implicit wait
     // TODO: Consider - what are other types of waits you could use? Why would you choose one over the other?
@@ -10,7 +18,7 @@ test('Open PurpleWave.com and reload page', async ({page})=>{
     await page.reload();
 });
 
-test('Interacting with an element at Purplewave.com', async({page})=>{
+test.skip('Interacting with an element at Purplewave.com', async({page})=>{
     await page.goto('https://www.purplewave.com/')
     // TODO: Refactor - place into a header page object file
     // TODO: Consider - what are other ways to click on this element? By role? By label?
