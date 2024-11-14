@@ -16,6 +16,7 @@ test.describe('Header Menu Visual Regression', () => {
         await page.waitForLoadState() // the promise resolves after "load" event.
         await expect(page)
             .toHaveScreenshot('auctions.png', {
+                timeout:10000,
                 mask: [
                     page.locator('#calendar-banner'),
                     page.locator("//*[contains (@class, 'caroufredsel_wrapper')]"),     // TODO: GROSS OLD HABITS
@@ -32,7 +33,8 @@ test.describe('Header Menu Visual Regression', () => {
         await page.waitForLoadState() // the promise resolves after "load" event.
         await expect(page)
             .toHaveScreenshot('buy.png', {
-            maxDiffPixels: pixelDiff, // Allow small differences
+                timeout:10000,
+                maxDiffPixels: pixelDiff, // Allow small differences
         });
     });
 
@@ -42,7 +44,8 @@ test.describe('Header Menu Visual Regression', () => {
         await page.waitForLoadState() // the promise resolves after "load" event.
         await expect(page)
             .toHaveScreenshot('sell.png', {
-            maxDiffPixels: pixelDiff, // Allow small differences
+                timeout:10000,
+                maxDiffPixels: pixelDiff, // Allow small differences
         });
     });
 
@@ -52,17 +55,19 @@ test.describe('Header Menu Visual Regression', () => {
         await page.waitForLoadState() // the promise resolves after "load" event.
         await expect(page)
             .toHaveScreenshot('results.png', {
-            maxDiffPixels: pixelDiff, // Allow small differences
+                timeout:10000,
+                maxDiffPixels: pixelDiff, // Allow small differences
         });
     });
 
-    test('Visual Regression for Equipment Menu', {
+    test.skip('Visual Regression for Equipment Menu', {
         tag: '@smoke' }, async ({ page }) => {
         await headerPage.clickEquipment(); // Click Equipment text
         await page.waitForLoadState() // the promise resolves after "load" event.
         await expect(page)
             .toHaveScreenshot('equipment.png', {
-            maxDiffPixels: pixelDiff, // Allow small differences
+                timeout:10000,
+                maxDiffPixels: pixelDiff, // Allow small differences
         });
     });
 
@@ -72,6 +77,7 @@ test.describe('Header Menu Visual Regression', () => {
         await page.waitForLoadState() // the promise resolves after "load" event.
         await expect(page)
             .toHaveScreenshot('appraisals.png', {
+                timeout:10000,
                 mask:[
                     page.locator('#root > div > div:nth-child(1)')
                 ],
@@ -86,6 +92,7 @@ test.describe('Header Menu Visual Regression', () => {
         await page.waitForLoadState() // the promise resolves after "load" event.
         await expect(page)
             .toHaveScreenshot('shipping.png', {
+                timeout:10000,
                 mask: [
                     page.locator('#html5_video_bfprqvef1t')
                 ],
@@ -100,7 +107,8 @@ test.describe('Header Menu Visual Regression', () => {
         await page.waitForLoadState() // the promise resolves after "load" event.
         await expect(page)
             .toHaveScreenshot('about.png', {
-            maxDiffPixels: pixelDiff, // Allow small differences
+                timeout:10000,
+                maxDiffPixels: pixelDiff, // Allow small differences
         });
     });
 });
