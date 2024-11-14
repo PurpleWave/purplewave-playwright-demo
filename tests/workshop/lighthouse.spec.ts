@@ -33,8 +33,18 @@ lighthouseTest.describe('Lighthouse', () => {
     await page.goto('http://purplewave.com');
     await page.waitForSelector('#auction-carousel-241119');
     await playAudit({
-      page,
+      page: page,
+      url:'http://purplewave.com',
       port,
+      reports: {
+        formats: {
+          json: true, //defaults to false
+          html: true, //defaults to false
+          csv: true, //defaults to false
+        },
+        name: `lighthouse-${new Date().getTime()}`, //defaults to `lighthouse-${new Date().getTime()}`
+        directory: `${process.cwd()}/lighthouse-report`, //defaults to `${process.cwd()}/lighthouse`
+      },
     });
   });
 });
