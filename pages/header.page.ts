@@ -7,7 +7,16 @@ export class HeaderPage {
     private page: Page;
 
     public loginOrRegister: Locator;
-    // Locators for links
+    public contactUsLink: Locator;
+    public allItemsLink: Locator; // New locator
+    public shoppingCartWrapper: Locator; // New locator
+    public recommendationsLabel: Locator; // New locator
+    public savedSearchesLabel: Locator; // New locator
+    public searchItemsInput: Locator; // New locator
+    public searchSubmitButton: Locator; // New locator
+    
+    // Locators for menu links
+    public homeLogo: Locator;
     public auctionsLink: Locator;
     public buyLink: Locator;
     public sellLink: Locator;
@@ -15,14 +24,17 @@ export class HeaderPage {
     public equipmentText: Locator;
     public appraisalsLink: Locator;
     public shippingLink: Locator;
-    public aboutLink: Locator;
+    public aboutLink: Locator;  
 
     constructor(page: Page) {
         this.page = page;
 
         this.loginOrRegister = this.page.locator('role=button[name="Login or Register"]');
+        this.contactUsLink = this.page.locator('role=link[name="Contact Us"]'); // New locator
+
 
         // Initialize locators for each menu item
+        this.homeLogo = this.page.locator('#header_logo');  // TODO: GROSS
         this.auctionsLink = this.page.locator('role=link[name="Auctions"]');
         this.buyLink = this.page.locator('role=link[name="Buy"]');
         this.sellLink = this.page.locator('role=link[name="Sell"]');
