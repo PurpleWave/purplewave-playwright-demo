@@ -5,6 +5,7 @@ import { Page, Locator } from 'playwright';
  */
 export class StaffPage {
     private page: Page;
+    
     readonly exampleLocator: Locator;
 
     // side menu

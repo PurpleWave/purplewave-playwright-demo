@@ -5,9 +5,10 @@ import { Page, Locator } from 'playwright';
  */
 export class BuyPage {
     private page: Page;
+    
     readonly exampleLocator: Locator;
 
-
+    // Main Body
     public buyingBannerImage: Locator;
     public registrationFAQ: Locator;
     public biddingAndBuyingFAQ: Locator;

@@ -5,6 +5,7 @@ import { Page, Locator } from 'playwright';
  */
 export class AppraisalPage {
     private page: Page;
+    
     readonly exampleLocator: Locator;
 
     constructor(page: Page) {

@@ -5,13 +5,14 @@ import { Page, Locator } from 'playwright';
  */
 export class BlogPage {
     private page: Page;
+    
     readonly exampleLocator: Locator;
 
     constructor(page: Page) {
-    this.page = page;
+        this.page = page;
     
-    // Example locator using the Playwright locator method
-    this.exampleLocator = page.locator('#example-element');
+        // Example locator using the Playwright locator method
+        this.exampleLocator = page.locator('#example-element');
     }
 
     // /**
