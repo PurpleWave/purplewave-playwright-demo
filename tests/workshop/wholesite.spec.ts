@@ -1,9 +1,10 @@
 import { test, expect } from '@playwright/test';
-import { HeaderPage } from '../../pages/header.page';
-import { LoginPage } from '../../pages/login.page';
-import { RegisterPage } from '../../pages/register.page';
+import { HeaderPage } from '../../pages/Header.page';
+import { LoginPage } from '../../pages/Login.page';
+import { RegisterPage } from '../../pages/Register.page';
+import { UtilitiesPage } from '../../pages/Utilities.page';
+
 // TEST
-import { UtilitiesPage } from '../../pages/utilities.page';
 
 import { AuctionPage } from '../../pages/Auction.page';
 test.describe('Registration Flow', () => {
@@ -36,7 +37,7 @@ test.describe('Registration Flow', () => {
         await page.waitForTimeout(8000);
     });
 
-    test.only('highlight all locators in AuctionPage', async ({ page }) => {
+    test('highlight all locators in AuctionPage', async ({ page }) => {
       
       
         utilities.highlightAllLocators(auction)
