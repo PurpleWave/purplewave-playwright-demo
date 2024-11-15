@@ -5,7 +5,7 @@ import { RegisterPage } from '../../pages/register.page';
 // TEST
 import { UtilitiesPage } from '../../pages/utilities.page';
 
-import { AuctionPage } from '../../pages/auction.page';
+import { AuctionPage } from '../../pages/Auction.page';
 test.describe('Registration Flow', () => {
     let header: HeaderPage;
     let login: LoginPage;

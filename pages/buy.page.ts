@@ -6,6 +6,8 @@ import { Page, Locator } from 'playwright';
 export class BuyPage {
     private page: Page;
     readonly exampleLocator: Locator;
+
+
     public buyingBannerImage: Locator;
     public registrationFAQ: Locator;
     public biddingAndBuyingFAQ: Locator;
@@ -18,12 +20,12 @@ export class BuyPage {
         
     }
 
-    /**
-    * Example method to interact with the example element on the page.
-    * @param {string} text - The text to input into the example element.
-    */
-    async exampleMethod(text: string) {
-        await this.exampleLocator.fill(text);  // Use the locator to fill the field
-        await this.exampleLocator.click();     // Example action: click the element
-    }
+    // /**
+    // * Example method to interact with the example element on the page.
+    // * @param {string} text - The text to input into the example element.
+    // */
+    // async exampleMethod(text: string) {
+    //     await this.exampleLocator.fill(text);  // Use the locator to fill the field
+    //     await this.exampleLocator.click();     // Example action: click the element
+    // }
 }
