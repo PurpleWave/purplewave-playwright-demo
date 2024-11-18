@@ -17,7 +17,6 @@ export class AuctionPage {
     public viewAllUpcomingItemsLink: Locator; // New locator
     public logInLink: Locator; // New locator
     public registerLink: Locator; // New locator
-    public testLocator: Locator;
 
     constructor(page: Page) {
         this.page = page;
