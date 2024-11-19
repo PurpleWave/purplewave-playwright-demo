@@ -12,6 +12,8 @@
     "@types/node": "^22.9.0"
   },
   "dependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "dotenv": "^16.4.5",
     "get-port": "^7.1.0",
     "playwright-lighthouse": "^4.0.0"
   }
