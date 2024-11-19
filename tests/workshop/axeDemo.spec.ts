@@ -10,7 +10,7 @@ test.describe('Accessibility Tests', () => {
     await page.goto('https://purplewave.com');
   });
 
-  test.only('Main page should not have accessibility violations', async ({ page}, testInfo ) => {
+  test('Main page should not have accessibility violations', async ({ page}, testInfo ) => {
     await checkAndReportA11y('MainPage', page, testInfo);
   });
 
