@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HeaderPage } from '../../pages/Header.page';
+import { HeaderPage } from '../../pages/header.page';
 import { LoginPage } from '../../pages/Login.page';
 import { RegisterPage } from '../../pages/Register.page';
 import { UtilitiesPage } from '../../pages/Utilities.page';
@@ -28,13 +28,6 @@ test.describe('Registration Flow', () => {
 
         // Navigate to the homepage before each test
         await page.goto('https://www.purplewave.com/');     // TODO: Cache and cookies? Maybe a new session for this type of TC?
-    });
-
-    test('THIS IS A TEST OF A LOCATOR STRAT', async () => {
-        
-        await auction.testLocator.click()
-        await console.log("Locator Clicked!")
-        await page.waitForTimeout(8000);
     });
 
     test('highlight all locators in AuctionPage', async ({ page }) => {
@@ -87,6 +80,9 @@ test.describe('Registration Flow', () => {
 
         // Optionally, check for error message or other validation
         // await expect(page.locator('text=Invalid email address')).toBeVisible();
+        // what do we really want to check here?
+        // Form validation?
+        // user flow?
     });
 });
 
