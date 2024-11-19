@@ -1,20 +1,17 @@
-import { test, expect } from '../../utils/Axe-Fixture';
+import { test } from '../../utils/Axe-Fixture';
+import { checkAndReportA11y } from '../../utils/Accessibility.util';
 import { HeaderPage } from '../../pages/header.page';
-import { UtilitiesPage } from '../../pages/utilities.page';
 
 test.describe('Accessibility Tests', () => {
   let headerPage: HeaderPage;
-  let utilitiesPage: UtilitiesPage;
 
   test.beforeEach(async ({ page }) => {
     headerPage = new HeaderPage(page);
-    utilitiesPage = new UtilitiesPage(page);
     await page.goto('https://purplewave.com');
   });
 
-  test.only('should not have accessibility violations on the main page', async ({ makeAxeBuilder }) => {
-    const accessibilityScanResults = await makeAxeBuilder().analyze();
-    expect(accessibilityScanResults.violations).toEqual([]);
+  test.only('Main page should not have accessibility violations', async ({ page}, testInfo ) => {
+    await checkAndReportA11y('MainPage', page, testInfo);
   });
 
 });
