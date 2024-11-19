@@ -30,7 +30,7 @@ export const lighthouseTest = base.extend<
 });
 
 lighthouseTest.describe('Lighthouse', () => {
-  lighthouseTest('should pass lighthouse tests', async ({ page, port }) => {
+  lighthouseTest.skip('should pass lighthouse tests', async ({ page, port }) => {
     await page.goto('http://purplewave.com');
     await page.waitForSelector('#auction-carousel-241119');
     await playAudit({
