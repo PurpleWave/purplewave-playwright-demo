@@ -3,4 +3,5 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-/.idea
+/.idea/misc.xml
+/.idea/workspace.xml
