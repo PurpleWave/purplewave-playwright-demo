@@ -1,8 +1,6 @@
 import { chromium } from 'playwright';
 import type { Browser } from 'playwright';
-import { playAudit } from 'playwright-lighthouse';
 import { test as base } from '@playwright/test';
-import getPort from 'get-port';   // not an export member - no brackets
 
 export const lighthouseTest = base.extend<
   {},
@@ -12,6 +10,7 @@ export const lighthouseTest = base.extend<
   port: [
     async ({}, use) => {
       // Assign a unique port for each playwright worker to support parallel tests
+      const { default: getPort } = await import('get-port');
       const port = await getPort();
       await use(port);
     },
@@ -31,6 +30,7 @@ export const lighthouseTest = base.extend<
 
 lighthouseTest.describe('Lighthouse', () => {
   lighthouseTest('should pass lighthouse tests', async ({ page, port }) => {
+    const { playAudit } = await import('playwright-lighthouse');
     await page.goto('https://purplewave.com');
     await page.waitForSelector('#auction-carousel-241119');
     await playAudit({
