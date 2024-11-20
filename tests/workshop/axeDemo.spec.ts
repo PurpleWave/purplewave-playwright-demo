@@ -1,6 +1,6 @@
 import { test } from '../../utils/Axe-Fixture';
 import { checkAndReportA11y } from '../../utils/Accessibility.util';
-import { HeaderPage } from '../../pages/header.page';
+import { HeaderPage } from '../../pages/Header.page';
 
 test.describe('Accessibility Tests', () => {
   let headerPage: HeaderPage;
