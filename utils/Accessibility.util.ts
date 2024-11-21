@@ -45,4 +45,5 @@ export async function checkAndReportA11y(
   // Fail the test if there are any accessibility violations
   // TODO: extend to allow violation threshold and exceptions
   expect(violations.violations).toEqual([]);
+  page.makeAxeBuilder()
 }

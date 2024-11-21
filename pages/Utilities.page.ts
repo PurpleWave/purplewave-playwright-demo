@@ -88,4 +88,29 @@ export class UtilitiesPage {
             console.error(`Intercom button did not become visible within the timeout period of ${timeout}ms.`);
         }
     }
+    
+    /**
+ * Adds metadata to a test, including suite names and issue IDs.
+ * This utility dynamically adds annotations to the testInfo object, allowing filtering or reporting based on metadata.
+ * 
+ * @example
+ * // Tags a test as a smoke test, on the auctionPage for 2 JIRA issues
+ * addTestMetadata(testInfo, { groups: ['smoke', 'auctionPage'], issues: ['JIRA-1234', 'JIRA-5678'] });
+ * 
+ * @param {any} testInfo - The testInfo object from Playwright, which provides context for the current test.
+ * @param {Object} tags - An object containing arrays of groups and issues.
+ * @param {string[]} [tags.groups] - An array of suite group names to associate with the test (e.g., "smoke", "auctionPage").
+ * @param {string[]} [tags.issues] - An array of issue IDs to associate with the test (e.g., "JIRA-1234").
+ * @returns {void}
+ */
+    public async addTestMetadata(
+        testInfo: any,
+        tags: { groups?: string[]; issues?: string[] } = {}
+    ): Promise<void> {
+        const { groups = [], issues = [] } = tags;
+
+        groups.forEach(group => testInfo.annotations.push({ type: 'group', description: group }));
+        issues.forEach(issue => testInfo.annotations.push({ type: 'issue', description: issue }));
+    }
+
 }

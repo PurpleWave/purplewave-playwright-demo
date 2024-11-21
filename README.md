@@ -61,7 +61,7 @@ ENABLE_ACCESSIBILITY=true
 ENABLE_VISUAL_COMPARISON=true
 ```
 
-Adjust the flags as needed.
+Adjust the flags as needed - right now these flags are experimental and not tied to any implementation. Nicholas Wilcox is the owner of the effort.
 
 ### 4. Install Playwright Browsers
 
@@ -72,15 +72,38 @@ npx playwright install
 ```
 
 ---
+## Google Lighthouse
+
+
+sas as
+
+---
+## Google Lighthouse
+This framework integrates Google Lighthouse audits into Playwright for testing key metrics like
+- Performance
+- Accessibility
+- Best practices
+- SEO 
+- PWA compliance.
+Reports are auto-generated in JSON, HTML, and CSV formats and stored in the lighthouse-report/ directory.
+
+Thresholds for each metric can be customized through the global config `lighthouse-config.ts`, or through the `playAudit` function in `playwright-lighthouse` module.
 
 ## Running Tests
+
+### All Tests
+
+Run all tests:
+```bash
+npx playwright test
+```
 
 ### Smoke Tests
 
 Run the smoke tests to verify all pages:
 
 ```bash
-npm run test:smoke
+npx playwright test:smoke
 ```
 
 ### Visual Regression
@@ -88,15 +111,7 @@ npm run test:smoke
 Run tests with visual comparison enabled:
 
 ```bash
-npm run test:visual
-```
-
-### Accessibility Testing
-
-Run accessibility checks using Axe Core:
-
-```bash
-npm run test:accessibility
+npx playwright test:visual
 ```
 
 ### Google Lighthouse Audits
@@ -113,17 +128,23 @@ npm run test:lighthouse
 
 ```plaintext
 .
+├── lighthouse-report/      # Folder for Google Lighthouse
 ├── node_modules/           # Installed dependencies
-├── src/
-│   ├── tests/              # Test files
-│   ├── pages/              # Page object files
-│   ├── utils/              # Utility files (e.g., test data generation)
-│   └── config/             # Configuration files
-├── .env                    # Environment variables
-├── package.json            # npm project file
-├── tsconfig.json           # TypeScript configuration
+├── pages/                  # Page object files
+├── playwright-report/      # Folder for playwright reports
+├── test-results/           # Folder for playwright test results
+├── tests/                  # Test files
+├── utils/                  # Utility files (e.g., test data generation)
+├── .env                    # Environment variables (experimental)
+├── .gitignore              # A list of files to ignore when pushing to github
+├── axe.config.ts           # AXE configuration file
+├── lighthouse-config.ts    # Lighthouse configuration file
+├── package-lock.json       # Locks versions of dependencies
+├── package.json            # Project metadata 
+├── playwright.config.ts    # Playwright configuration
 ├── README.md               # This file
-└── playwright.config.ts    # Playwright configuration
+└── tsconfig.json           # TypeScript configuration
+
 ```
 
 ---
@@ -134,7 +155,7 @@ npm run test:lighthouse
 2. If you face issues with browser binaries, re-run \
 px playwright install\.
 3. All output reports (e.g., accessibility, Lighthouse, and visual) will be saved in the \
-eports/\ directory.
+reports/\ directory.
 
 ---
 
@@ -143,7 +164,3 @@ eports/\ directory.
 If you want to contribute to this repository, please create a new branch and submit a pull request. Ensure your code follows the project's coding standards and includes test coverage.
 
 ---
-
-## License
-
-This repository is licensed under the [MIT License](LICENSE).

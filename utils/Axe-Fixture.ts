@@ -18,7 +18,9 @@ export const test = base.extend<AxeFixture>({
     makeAxeBuilder: async ({ page }, use) => {
         const makeAxeBuilder = () =>
             new AxeBuilder({ page })
-            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']); // Customize tags if needed
+            // Customize tags if needed
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']);
+            
 
         await use(makeAxeBuilder);
     },

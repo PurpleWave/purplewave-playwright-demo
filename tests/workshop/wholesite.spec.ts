@@ -64,7 +64,7 @@ test.describe('Registration Flow', () => {
         await page.waitForTimeout(3000); // TODO: Remove - DEMO purposes ONLY
 
         // Step 4: add assertions to verify success:
-        // await expect(page).toHaveURL('https://www.purplewave.com/SOMETHINGIDUNNO');
+        await expect(page).toHaveURL('https://www.purplewave.com/SOMETHINGIDUNNO');
     });
 
     test('should show error for invalid email', async () => {

@@ -30,12 +30,13 @@ export const lighthouseTest = base.extend<
 });
 
 lighthouseTest.describe('Lighthouse', () => {
-  lighthouseTest('should pass lighthouse tests', async ({ page, port }) => {
-    await page.goto('https://purplewave.com');
-    await page.waitForSelector('#auction-carousel-241119');
+  lighthouseTest.only('should pass lighthouse tests', async ({ page, port }) => {
+    await page.goto('https://www.purplewave.com/inventory/farm-equipment-for-sale');
+    await page.waitForTimeout(5000);
+    // await page.waitForSelector('#auction-carousel-241119');
     await playAudit({
       page: page,
-      url: 'https://purplewave.com',
+      url: 'https://www.purplewave.com/inventory/farm-equipment-for-sale',
       port,
       thresholds: {
         performance: 1,
