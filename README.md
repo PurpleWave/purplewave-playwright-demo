@@ -72,22 +72,25 @@ npx playwright install
 ```
 
 ---
-## Google Lighthouse
+## AXE Integration
 
 
-sas as
+https://playwright.dev/docs/accessibility-testing
 
 ---
-## Google Lighthouse
+## Google Lighthouse Integration
 This framework integrates Google Lighthouse audits into Playwright for testing key metrics like
-- Performance
-- Accessibility
-- Best practices
-- SEO 
-- PWA compliance.
+- **Performance**
+- **Accessibility**
+- **Best practices**
+- **SEO**
+- **PWA compliance**
+
 Reports are auto-generated in JSON, HTML, and CSV formats and stored in the lighthouse-report/ directory.
 
 Thresholds for each metric can be customized through the global config `lighthouse-config.ts`, or through the `playAudit` function in `playwright-lighthouse` module.
+
+To learn more about google lighthouse, [visit the NPM repo](https://www.npmjs.com/package/playwright-lighthouse "go to NPM") or visit 
 
 ## Running Tests
 
@@ -148,14 +151,18 @@ npm run test:lighthouse
 ```
 
 ---
-
+## Supporting Documentation
+- [Automated Test Structure](https://pwhelpdesk.atlassian.net/wiki/spaces/QE/pages/608567300/Playwright+Automated+Test+Structure "Learn about the parts of a standard test in Playwright at PurpleWave")
 ## Additional Notes
 
 1. Ensure your Node.js version matches the specified requirement in \package.json\.
 2. If you face issues with browser binaries, re-run \
-px playwright install\.
+```bash
+npx playwright install
+```
 3. All output reports (e.g., accessibility, Lighthouse, and visual) will be saved in the \
 reports/\ directory.
+TODO: NOPE - fix this one way or another.
 
 ---
 
