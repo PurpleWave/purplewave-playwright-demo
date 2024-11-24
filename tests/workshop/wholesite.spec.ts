@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HeaderPage } from '../../pages/Header.page';
+import { NavigationPage } from '../../pages/Navigation.page';
 import { LoginPage } from '../../pages/Login.page';
 import { RegisterPage } from '../../pages/Register.page';
 import { UtilitiesPage } from '../../pages/Utilities.page';
@@ -8,7 +8,7 @@ import { UtilitiesPage } from '../../pages/Utilities.page';
 
 import { AuctionPage } from '../../pages/Auction.page';
 test.describe('Registration Flow', () => {
-    let header: HeaderPage;
+    let navigate: NavigationPage;
     let login: LoginPage;
     let register: RegisterPage;
     let page: any;
@@ -19,7 +19,7 @@ test.describe('Registration Flow', () => {
     // Use beforeEach to set up page objects and common setup logic
     test.beforeEach(async ({ page: p }) => {
         page = p;
-        header = new HeaderPage(page);
+        navigate = new NavigationPage(page);
         login = new LoginPage(page);
         register = new RegisterPage(page);
         auction = new AuctionPage(page);
@@ -40,7 +40,7 @@ test.describe('Registration Flow', () => {
 
     test('should allow a user to register with valid details', async () => {
         // Step 1: Navigate to the registration page
-        await header.loginOrRegister.click();
+        await navigate.loginOrRegister.click();
         await login.registerHere.click();
 
         // Step 2: Fill out the registration form with valid data
@@ -69,7 +69,7 @@ test.describe('Registration Flow', () => {
 
     test('should show error for invalid email', async () => {
         // Similar steps for an invalid email test case
-        await header.loginOrRegister.click();
+        await navigate.loginOrRegister.click();
         await login.registerHere.click();
 
         // Step 1: Fill out the registration form with invalid email

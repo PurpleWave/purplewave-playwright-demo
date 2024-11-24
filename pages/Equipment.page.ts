@@ -1,19 +1,17 @@
 import { Page, Locator } from 'playwright';
 
 /**
- * HomePage class for interacting with the home page.
+ * EquipmentPage class for interacting with the equipment page.
  */
-export class HomePage {
+export class EquipmentPage {
     private page: Page;
     
-    readonly exampleLocator: Locator;
-
-    constructor(page: Page) {
-        this.page = page;
-        // Example locator using the Playwright locator method
-        this.exampleLocator = page.locator('#example-element');
+    
+        constructor(page: Page) {
+            this.page = page;
     }
 
+    
     // /**
     // * Example method to interact with the example element on the page.
     // * @param {string} text - The text to input into the example element.

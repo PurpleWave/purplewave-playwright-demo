@@ -13,10 +13,10 @@ export class SellPage{
     public phoneInput: Locator;
     public streetInput: Locator;
     public postalCodeInput: Locator;
-    public stateDropdown: Locator;
-    public countryDropdown: Locator;
-    public assetTypeDropdown: Locator;
-    public valueDropdown: Locator;
+    public stateDropdown: Locator;      // TODO: fix the drop down interactions 
+    public countryDropdown: Locator;    // TODO: fix the drop down interactions
+    public assetTypeDropdown: Locator;  // TODO: fix the drop down interactions
+    public valueDropdown: Locator;      // TODO: fix the drop down interactions
     public imagesInput: Locator;
     public descriptionTextarea: Locator;
 
