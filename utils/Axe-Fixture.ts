@@ -1,4 +1,4 @@
-import { test as base, expect } from '@playwright/test';
+import { test as base, expect, Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 type AxeFixture = {
@@ -11,16 +11,20 @@ type AxeFixture = {
 };
 
 /**
- * Extends the Playwright base test with an `makeAxeBuilder` fixture.
+ * Extends the Playwright base test with a `makeAxeBuilder` fixture.
  * This fixture initializes AxeBuilder with predefined accessibility tags.
  */
 export const test = base.extend<AxeFixture>({
-    makeAxeBuilder: async ({ page }, use) => {
-        const makeAxeBuilder = () =>
-            new AxeBuilder({ page })
-            // Customize tags if needed
-            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']);
-            
+    makeAxeBuilder: async ({ page }: { page: Page }, use: (builder: () => AxeBuilder) => Promise<void>) => {
+        const makeAxeBuilder = () => {
+            try {
+                return new AxeBuilder({ page })
+                    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']);
+            } catch (error) {
+                console.error('Error creating AxeBuilder instance:', error);
+                throw error;
+            }
+        };
 
         await use(makeAxeBuilder);
     },

@@ -1,7 +1,8 @@
-import { expect } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import fs from 'fs';
 import path from 'path';
+import { TestInfo } from '@playwright/test';
 
 /**
  * Performs an accessibility check on the specified page and reports any violations.
@@ -13,11 +14,12 @@ import path from 'path';
  */
 export async function checkAndReportA11y(
   pageName: string,
-  page: any,
-  testInfo: any,
+  page: Page,
+  testInfo: TestInfo,
   context?: string // Optional context selector to limit scope of scan
 ) {
   // Initialize AxeBuilder and apply WCAG tags for accessibility standards
+  // WCAG 2.0 Level A and AA tags are applied to ensure the page meets basic and enhanced accessibility requirements.
   let axeBuilder = new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']);
 
   // Conditionally include context if provided
@@ -43,7 +45,6 @@ export async function checkAndReportA11y(
   fs.writeFileSync(filePath, JSON.stringify(violations.violations, null, 2));
 
   // Fail the test if there are any accessibility violations
-  // TODO: extend to allow violation threshold and exceptions
+  // TODO: Add functionality to allow setting a threshold for acceptable violations and specify exceptions for known issues.
   expect(violations.violations).toEqual([]);
-  page.makeAxeBuilder()
 }

@@ -77,6 +77,9 @@ test.describe('Registration Flow', () => {
         await register.enterLastName('Doe');
         await register.enterEmail('invalid-email');
         await register.enterPassword('securePassword123');
+        await register.referralTypeDropdown.click();
+        await register.selectOptionByText('Copart');
+        await register.preferredLanguageDropdown.click();   
 
         // Optionally, check for error message or other validation
         // await expect(page.locator('text=Invalid email address')).toBeVisible();
@@ -84,8 +87,5 @@ test.describe('Registration Flow', () => {
         // Form validation?
         // user flow?
     });
-});
 
-test.describe('Full Menu Click', () => {
-    
-})
+});

@@ -56,9 +56,9 @@ Create a \.env\ file in the root of the project and configure it based on the fo
 
 ```bash
 # Environment variables
-ENABLE_LIGHTHOUSE=true
-ENABLE_ACCESSIBILITY=true
-ENABLE_VISUAL_COMPARISON=true
+RUN_VISUAL_COMPARISON = true
+RUN_LH_AUDIT = true
+ENABLE_AXE = true
 ```
 
 Adjust the flags as needed - right now these flags are experimental and not tied to any implementation. Nicholas Wilcox is the owner of the effort.
