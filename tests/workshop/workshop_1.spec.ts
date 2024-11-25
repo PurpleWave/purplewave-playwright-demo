@@ -18,7 +18,8 @@ test.describe('Registration Flow', () => {
 
     // Use beforeEach to set up page objects and common setup logic
     test.beforeEach(async ({ page: p }, testInfo) => {
-        // Add metadata tags for ALL tests
+        // Add metadata tags for ALL tests 
+        utilities = new UtilitiesPage(page);
         utilities.addTestMetadata(testInfo, {
             groups: ['auctionPage'],
             issues: ['JIRA-1234']
@@ -26,7 +27,6 @@ test.describe('Registration Flow', () => {
         page = p;
         header = new HeaderPage(page);
         auction = new AuctionPage(page);
-        utilities = new UtilitiesPage(page);
 
         // Navigate to the homepage before each test
         await p.goto('https://www.purplewave.com/');     // TODO: Cache and cookies? Maybe a new session for this type of TC?
