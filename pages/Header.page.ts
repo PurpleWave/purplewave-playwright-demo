@@ -8,12 +8,12 @@ export class HeaderPage {
 
     public loginOrRegister: Locator;
     public contactUsLink: Locator;
-    public allItemsLink: Locator; // New locator
-    public shoppingCartWrapper: Locator; // New locator
-    public recommendationsLabel: Locator; // New locator
-    public savedSearchesLabel: Locator; // New locator
-    public searchItemsInput: Locator; // New locator
-    public searchSubmitButton: Locator; // New locator
+    public allItemsLink: Locator;
+    public shoppingCartWrapper: Locator;
+    public recommendationsLabel: Locator;
+    public savedSearchesLabel: Locator;
+    public searchItemsInput: Locator;
+    public searchSubmitButton: Locator;
     
     // Locators for menu links
     public homeLogo: Locator;
@@ -30,7 +30,7 @@ export class HeaderPage {
         this.page = page;
 
         this.loginOrRegister = this.page.locator('role=button[name="Login or Register"]');
-        this.contactUsLink = this.page.locator('role=link[name="Contact Us"]'); // New locator
+        this.contactUsLink = this.page.locator('role=link[name="Contact Us"]');
 
 
         // Initialize locators for each menu item

@@ -3,32 +3,48 @@
 //                           This is a learning sandbox.
 //
 /////////////////////////////////////////////////////////////////////////////////////////
+import { test, expect } from '@playwright/test';
+import { HeaderPage } from '../../pages/header.page';
+import { UtilitiesPage } from '../../pages/Utilities.page';
 
+// TEST
 
+import { AuctionPage } from '../../pages/Auction.page';
+test.describe('Registration Flow', () => {
+    let header: HeaderPage;
+    let page: any;
+    let auction: AuctionPage;
+    let utilities: UtilitiesPage;
 
-// import test 
-import { test } from 'playwright/test'
+    // Use beforeEach to set up page objects and common setup logic
+    test.beforeEach(async ({ page: p }, testInfo) => {
+        // Add metadata tags for ALL tests
+        utilities.addTestMetadata(testInfo, {
+            groups: ['auctionPage'],
+            issues: ['JIRA-1234']
+        });
+        page = p;
+        header = new HeaderPage(page);
+        auction = new AuctionPage(page);
+        utilities = new UtilitiesPage(page);
 
-// a simple test to open Purplewave.com, wait till everything is loaded and then reload the page
-test.skip('Open PurpleWave.com and reload page', async ({page})=>{
-    await page.goto('https://www.purplewave.com/');
-    // TODO: Refactor - this implicit wait
-    // TODO: Consider - what are other types of waits you could use? Why would you choose one over the other?
-    await page.waitForTimeout(3000);
-    await page.reload();
-});
+        // Navigate to the homepage before each test
+        await p.goto('https://www.purplewave.com/');     // TODO: Cache and cookies? Maybe a new session for this type of TC?
+    });
 
-test.skip('Interacting with an element at Purplewave.com', async({page})=>{
-    await page.goto('https://www.purplewave.com/')
-    // TODO: Refactor - place into a header page object file
-    // TODO: Consider - what are other ways to click on this element? By role? By label?
-    // await page.click('#header_login');
+    test('highlight all locators in AuctionPage', async ({ page }, testInfo) => {
+        tag:
+        utilities.addTestMetadata(testInfo, {
+            groups: ['smoke', 'utilities'],
+            issues: ['JIRA-456']    // a member of both 1234 and 456
+        });
+      
+        utilities.highlightAllLocators(auction)
+        // Wait to observe the highlights before the test ends
+        await page.waitForTimeout(3000);
+      });
 
-    // TRAINING - using page.locator we can access the parent ID of '#header' and then use getByRole to select child elements
-    await page.locator("#header").getByRole("button", {name: "Login or Register"}).click(); // TRAINING - Notice this is a button, not a link :D
-
-    // await page.click(':has-text("Register here.")');    // TRAINING - built in argument :has-text maybe slower?
-    await page.getByRole("link", {name: 'Register here.'}).click();
-    
-    await page.waitForTimeout(3000);
+    test('should allow a user to register with valid details', async () => {
+        
+    });
 });

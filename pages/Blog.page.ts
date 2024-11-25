@@ -7,6 +7,8 @@ export class BlogPage {
     private page: Page;
     
     readonly exampleLocator: Locator;
+    
+    
 
     constructor(page: Page) {
         this.page = page;

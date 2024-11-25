@@ -35,7 +35,7 @@ lighthouseTest.describe('Lighthouse', () => {
     await page.waitForSelector('#auction-carousel-241119');
     await playAudit({
       page: page,
-      url: 'https://purplewave.com',
+      url: 'https://www.purplewave.com/inventory/farm-equipment-for-sale',
       port,
       thresholds: {
         performance: 1,
