@@ -44,6 +44,12 @@ export default defineConfig({
       { name: 'fe.qa', testDir: './tests/fe', use: { baseURL: process.env.BASE_URL } },
       { name: 'cliq.qa', testDir: './tests/cliq', use: { baseURL: process.env.BASE_URL } },
       { name: 'ims.qa', testDir: './tests/ims', use: { baseURL: process.env.BASE_URL } },
+      { name: 'fe.stage', testDir: './tests/fe', use: { baseURL: process.env.BASE_URL } },
+      { name: 'cliq.stage', testDir: './tests/cliq', use: { baseURL: process.env.BASE_URL } },
+      { name: 'ims.stage', testDir: './tests/ims', use: { baseURL: process.env.BASE_URL } },
+      { name: 'fe.prod', testDir: './tests/fe', use: { baseURL: process.env.BASE_URL } },
+      // { name: 'cliq.prod', testDir: './tests/cliq', use: { baseURL: process.env.BASE_URL } },
+      // { name: 'ims.prod', testDir: './tests/ims', use: { baseURL: process.env.BASE_URL } },
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },

@@ -44,13 +44,13 @@ test.describe('Registration Flow', () => {
 
       });
 
-    test.only('should allow a user to register with valid details', async () => {
+    test('should allow a user to register with valid details', async () => {
         
         // go to env BASE_URL
-        await page.goto(process.env.BASE_URL);
-        const username = process.env.USERNAME || 'defaultuser';
-        const password = process.env.PASSWORD || 'defaultpass';
-        console.log(username, password, process.env.BASE_URL);
+        // await page.goto(process.env.BASE_URL);
+        // const username = process.env.USERNAME || 'defaultuser';
+        // const password = process.env.PASSWORD || 'defaultpass';
+        // console.log(utilities.environmentBaseUrl, utilities.environmentUserName, utilities.environmentPassword);
         
     });
 });
