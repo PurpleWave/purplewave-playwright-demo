@@ -6,9 +6,11 @@ dotenv.config();
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+// Load environment-specific .env file
+const ENV = process.env.ENV || 'qa';
+const APP = process.env.APP || 'fe'; // Default app is 'fe'
+dotenv.config({ path: `./env/${APP}/.env.${APP}.${ENV}` });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -39,22 +41,31 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+      { name: 'fe.qa', testDir: './tests/fe', use: { baseURL: process.env.BASE_URL } },
+      { name: 'cliq.qa', testDir: './tests/cliq', use: { baseURL: process.env.BASE_URL } },
+      { name: 'ims.qa', testDir: './tests/ims', use: { baseURL: process.env.BASE_URL } },
+      { name: 'fe.stage', testDir: './tests/fe', use: { baseURL: process.env.BASE_URL } },
+      { name: 'cliq.stage', testDir: './tests/cliq', use: { baseURL: process.env.BASE_URL } },
+      { name: 'ims.stage', testDir: './tests/ims', use: { baseURL: process.env.BASE_URL } },
+      { name: 'fe.prod', testDir: './tests/fe', use: { baseURL: process.env.BASE_URL } },
+      // { name: 'cliq.prod', testDir: './tests/cliq', use: { baseURL: process.env.BASE_URL } },
+      // { name: 'ims.prod', testDir: './tests/ims', use: { baseURL: process.env.BASE_URL } },
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
 
-    /* Test against mobile viewports. */
+    // /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
@@ -64,7 +75,7 @@ export default defineConfig({
     //   use: { ...devices['iPhone 12'] },
     // },
 
-    /* Test against branded browsers. */
+    // /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },

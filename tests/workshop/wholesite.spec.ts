@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { NavigationPage } from '../../pages/Navigation.page';
-import { LoginPage } from '../../pages/Login.page';
-import { RegisterPage } from '../../pages/Register.page';
+import { NavigationPage } from '../../pages/fe/Navigation.page';
+import { LoginPage } from '../../pages/fe/Login.page';
+import { RegisterPage } from '../../pages/fe/Register.page';
 import { UtilitiesPage } from '../../pages/Utilities.page';
 
 // TEST
 
-import { AuctionPage } from '../../pages/Auction.page';
+import { AuctionPage } from '../../pages/fe/Auction.page';
 test.describe('Registration Flow', () => {
     let navigate: NavigationPage;
     let login: LoginPage;
@@ -77,6 +77,9 @@ test.describe('Registration Flow', () => {
         await register.enterLastName('Doe');
         await register.enterEmail('invalid-email');
         await register.enterPassword('securePassword123');
+        await register.referralTypeDropdown.click();
+        await register.selectOptionByText('Copart');
+        await register.preferredLanguageDropdown.click();   
 
         // Optionally, check for error message or other validation
         // await expect(page.locator('text=Invalid email address')).toBeVisible();
@@ -84,8 +87,5 @@ test.describe('Registration Flow', () => {
         // Form validation?
         // user flow?
     });
-});
 
-test.describe('Full Menu Click', () => {
-    
-})
+});

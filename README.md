@@ -56,9 +56,9 @@ Create a \.env\ file in the root of the project and configure it based on the fo
 
 ```bash
 # Environment variables
-ENABLE_LIGHTHOUSE=true
-ENABLE_ACCESSIBILITY=true
-ENABLE_VISUAL_COMPARISON=true
+RUN_VISUAL_COMPARISON = true
+RUN_LH_AUDIT = true
+ENABLE_AXE = true
 ```
 
 Adjust the flags as needed - right now these flags are experimental and not tied to any implementation. Nicholas Wilcox is the owner of the effort.
@@ -94,11 +94,20 @@ To learn more about google lighthouse, [visit the NPM repo](https://www.npmjs.co
 
 ## Running Tests
 
+To run tests, you must designate which environment you will be running the tests on and what application you are testing.
+For example, if want to run tests on staging for the front end, you would use the prefix:
+
+```bash
+ENV=stage APP=fe
+```
+
+This designates the front end application will be tested on the staging environment.
+
 ### All Tests
 
 Run all tests:
 ```bash
-npx playwright test
+ENV=stage APP=fe npx playwright test
 ```
 
 ### Smoke Tests
@@ -106,15 +115,15 @@ npx playwright test
 Run the smoke tests to verify all pages:
 
 ```bash
-npx playwright test:smoke
+ENV=stage APP=fe npx playwright --grep '@group:smoke'
 ```
 
-### Visual Regression
+### JIRA/X-RAY Issue ID
 
-Run tests with visual comparison enabled:
+Run tests by Jira issue
 
 ```bash
-npx playwright test:visual
+ENV=stage APP=fe npx playwright --grep '@issue: (JIRA-123|JIRA-5678)'
 ```
 
 ### Google Lighthouse Audits
@@ -122,7 +131,7 @@ npx playwright test:visual
 Run tests with Lighthouse analytics:
 
 ```bash
-npm run test:lighthouse
+ENV=stage APP=fe npm run test:lighthouse
 ```
 
 ---
@@ -134,9 +143,15 @@ npm run test:lighthouse
 ├── lighthouse-report/      # Folder for Google Lighthouse
 ├── node_modules/           # Installed dependencies
 ├── pages/                  # Page object files
+│   ├── fe/                 # Front end page objects
+│   ├── cliq/               # Cliquidator page objects
+│   ├── ims/                # IMS page objects
 ├── playwright-report/      # Folder for playwright reports
 ├── test-results/           # Folder for playwright test results
 ├── tests/                  # Test files
+│   ├── fe/                 # FE test cases
+│   ├── cliq/               # Cliquidator test cases
+│   ├── ims/                # IMS test cases
 ├── utils/                  # Utility files (e.g., test data generation)
 ├── .env                    # Environment variables (experimental)
 ├── .gitignore              # A list of files to ignore when pushing to github

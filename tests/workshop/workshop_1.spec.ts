@@ -4,12 +4,18 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////////
 import { test, expect } from '@playwright/test';
-import { HeaderPage } from '../../pages/header.page';
+import { HeaderPage } from '../../pages/fe/Header.page';
 import { UtilitiesPage } from '../../pages/Utilities.page';
 
 // TEST
+import dotenv from 'dotenv';
 
-import { AuctionPage } from '../../pages/Auction.page';
+// TEST
+dotenv.config({
+    path: '.env.test'
+})
+
+import { AuctionPage } from '../../pages/fe/Auction.page';
 test.describe('Registration Flow', () => {
     let header: HeaderPage;
     let page: any;
@@ -18,7 +24,8 @@ test.describe('Registration Flow', () => {
 
     // Use beforeEach to set up page objects and common setup logic
     test.beforeEach(async ({ page: p }, testInfo) => {
-        // Add metadata tags for ALL tests
+        // Add metadata tags for ALL tests 
+        utilities = new UtilitiesPage(page);
         utilities.addTestMetadata(testInfo, {
             groups: ['auctionPage'],
             issues: ['JIRA-1234']
@@ -26,11 +33,7 @@ test.describe('Registration Flow', () => {
         page = p;
         header = new HeaderPage(page);
         auction = new AuctionPage(page);
-        utilities = new UtilitiesPage(page);
-
-        // Navigate to the homepage before each test
-        await p.goto('https://www.purplewave.com/');     // TODO: Cache and cookies? Maybe a new session for this type of TC?
-    });
+        });
 
     test('highlight all locators in AuctionPage', async ({ page }, testInfo) => {
         tag:
@@ -38,13 +41,16 @@ test.describe('Registration Flow', () => {
             groups: ['smoke', 'utilities'],
             issues: ['JIRA-456']    // a member of both 1234 and 456
         });
-      
-        utilities.highlightAllLocators(auction)
-        // Wait to observe the highlights before the test ends
-        await page.waitForTimeout(3000);
+
       });
 
     test('should allow a user to register with valid details', async () => {
+        
+        // go to env BASE_URL
+        // await page.goto(process.env.BASE_URL);
+        // const username = process.env.USERNAME || 'defaultuser';
+        // const password = process.env.PASSWORD || 'defaultpass';
+        // console.log(utilities.environmentBaseUrl, utilities.environmentUserName, utilities.environmentPassword);
         
     });
 });
