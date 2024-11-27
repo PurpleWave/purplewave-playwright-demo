@@ -2,8 +2,6 @@ import { test, expect } from '@playwright/test';
 
 test.only('test', async ({ page }) => {
   await page.goto('https://qa.cliquidator.info/c/');
-  await page.getByRole('button', { name: 'Advanced' }).click();
-  await page.getByRole('link', { name: 'Proceed to ims-qa.cliquidator' }).click();
   await page.locator('input[name="username"]').click();
   await page.locator('input[name="username"]').fill('nick.wilcox@gmail.com');
   await page.locator('input[name="username"]').press('Tab');
@@ -17,4 +15,5 @@ test.only('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Sign in' }).click();
   await page.getByPlaceholder('Account number').click();
   await page.goto('https://ims-qa.cliquidator.info/home');
+  await page.waitForTimeout(10000);
 });
