@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 import { test, expect } from '@playwright/test';
 import { HeaderPage } from '../../pages/fe/Header.page';
-import { UtilitiesPage } from '../../pages/Utilities.page';
+import { UtilitiesPage } from '../../utils/Utilities.page'; // Import UtilitiesPage
 
 // TEST
 import dotenv from 'dotenv';

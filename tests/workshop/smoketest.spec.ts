@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { HeaderPage } from '../../pages/fe/Header.page'; // Import the page object model
-import { UtilitiesPage } from '../../pages/Utilities.page'; // Import UtilitiesPage
+import { UtilitiesPage } from '../../utils/Utilities.page'; // Import UtilitiesPage
 
 test.describe('Header Menu Visual Regression', () => {
     let headerPage: HeaderPage;
