@@ -1,6 +1,10 @@
 {
-    "compilerOptions": {
-      "types": ["@axe-core/playwright"]
-    }
+  "compilerOptions": {
+    "types": [
+      "@axe-core/playwright"
+    ],
+    "esModuleInterop": true,
+    "moduleResolution": "Bundler",
+    "strict": true
   }
-  
+}

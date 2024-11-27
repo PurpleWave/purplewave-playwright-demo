@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 import { test, expect } from '@playwright/test';
 import { HeaderPage } from '../../pages/fe/Header.page';
-import { UtilitiesPage } from '../../pages/Utilities.page';
+import { UtilitiesPage } from '../../utils/Utilities.page'; // Import UtilitiesPage
 
 // TEST
 import dotenv from 'dotenv';
@@ -36,7 +36,6 @@ test.describe('Registration Flow', () => {
         });
 
     test('highlight all locators in AuctionPage', async ({ page }, testInfo) => {
-        tag:
         utilities.addTestMetadata(testInfo, {
             groups: ['smoke', 'utilities'],
             issues: ['JIRA-456']    // a member of both 1234 and 456

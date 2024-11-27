@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { NavigationPage } from '../../pages/fe/Navigation.page';
 import { LoginPage } from '../../pages/fe/Login.page';
 import { RegisterPage } from '../../pages/fe/Register.page';
-import { UtilitiesPage } from '../../pages/Utilities.page';
+import { UtilitiesPage } from '../../utils/Utilities.page'; // Import UtilitiesPage
 
 // TEST
 
@@ -17,7 +17,7 @@ test.describe('Registration Flow', () => {
     let utilities: UtilitiesPage;
 
     // Use beforeEach to set up page objects and common setup logic
-    test.beforeEach(async ({ page: p }) => {
+    test.beforeEach(async ({ page: p }, testInfo) => {
         page = p;
         navigate = new NavigationPage(page);
         login = new LoginPage(page);
@@ -25,20 +25,31 @@ test.describe('Registration Flow', () => {
         auction = new AuctionPage(page);
         // TEST
         utilities = new UtilitiesPage(page);
+        utilities.addTestMetadata(testInfo, {
+            groups: ['auctionPage'],
+            issues: ['JIRA-1234']
+        });
 
         // Navigate to the homepage before each test
         await page.goto('https://www.purplewave.com/');     // TODO: Cache and cookies? Maybe a new session for this type of TC?
     });
 
-    test('highlight all locators in AuctionPage', async ({ page }) => {
-      
+    test('highlight all locators in AuctionPage', async ({ page }, testInfo) => {
+        utilities.addTestMetadata(testInfo, {
+            groups: ['smoke', 'utilities'],
+            issues: ['JIRA-456']    // a member of both 1234 and 456
+        });
       
         utilities.highlightAllLocators(auction)
         // Wait to observe the highlights before the test ends
         await page.waitForTimeout(3000);
       });
 
-    test('should allow a user to register with valid details', async () => {
+    test('should allow a user to register with valid details', async ({ page }, testInfo) => {
+        utilities.addTestMetadata(testInfo, {
+            groups: ['smoke', 'registration'],
+            issues: ['JIRA-456']    // a member of both 1234 and 456
+        });
         // Step 1: Navigate to the registration page
         await navigate.loginOrRegister.click();
         await login.registerHere.click();
@@ -67,7 +78,11 @@ test.describe('Registration Flow', () => {
         await expect(page).toHaveURL('https://www.purplewave.com/SOMETHINGIDUNNO');
     });
 
-    test('should show error for invalid email', async () => {
+    test('should show error for invalid email', async ({ page }, testInfo) => {
+        utilities.addTestMetadata(testInfo, {
+            groups: ['smoke', 'registration'],
+            issues: ['JIRA-456']    // a member of both 1234 and 456
+        });
         // Similar steps for an invalid email test case
         await navigate.loginOrRegister.click();
         await login.registerHere.click();
