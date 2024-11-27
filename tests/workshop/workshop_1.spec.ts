@@ -36,7 +36,6 @@ test.describe('Registration Flow', () => {
         });
 
     test('highlight all locators in AuctionPage', async ({ page }, testInfo) => {
-        tag:
         utilities.addTestMetadata(testInfo, {
             groups: ['smoke', 'utilities'],
             issues: ['JIRA-456']    // a member of both 1234 and 456
