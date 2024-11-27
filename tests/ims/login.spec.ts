@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.only('test', async ({ page }) => {
-  await page.goto('chrome-error://chromewebdata/');
+  await page.goto('https://qa.cliquidator.info/c/');
   await page.getByRole('button', { name: 'Advanced' }).click();
   await page.getByRole('link', { name: 'Proceed to ims-qa.cliquidator' }).click();
   await page.locator('input[name="username"]').click();
