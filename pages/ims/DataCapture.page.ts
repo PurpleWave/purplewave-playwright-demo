@@ -1,7 +1,7 @@
 import { Page, Locator } from 'playwright'
 
 export class DataCapturePage {
-    private page: Page;
+    protected page: Page;
     
     // New Data Capture Forms
     public preDcCheckbox: Locator;
