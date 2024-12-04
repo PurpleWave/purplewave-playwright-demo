@@ -14,7 +14,9 @@
   "dependencies": {
     "@axe-core/playwright": "^4.10.1",
     "dotenv": "^16.4.5",
+    "fast-xml-parser": "^4.5.0",
     "get-port": "^7.1.0",
+    "node-fetch": "^3.3.2",
     "playwright-lighthouse": "^4.0.0"
   }
 }

@@ -8,7 +8,7 @@ import { HeaderPage } from '../../pages/fe/Header.page';
 import { UtilitiesPage } from '../../utils/Utilities.page'; // Import UtilitiesPage
 
 // TEST
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 
 // TEST
 dotenv.config({
