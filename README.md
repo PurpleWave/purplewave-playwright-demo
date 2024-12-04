@@ -126,6 +126,17 @@ Run tests by Jira issue
 ENV=stage APP=fe npx playwright --grep '@issue: (JIRA-123|JIRA-5678)'
 ```
 
+### Run Playwright with Debug UI
+```bash
+ENV=stage APP=fe npx playwright --ui
+```
+
+Run tests with Lighthouse analytics:
+
+```bash
+ENV=stage APP=fe npm run test:lighthouse
+```
+
 ### Google Lighthouse Audits
 
 Run tests with Lighthouse analytics:
