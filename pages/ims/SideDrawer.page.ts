@@ -5,4 +5,8 @@ import { Page, Locator } from 'playwright';
  */
 export class SideDrawerPage {
     private page: Page;
+
+    constructor(page: Page) {
+        this.page = page;
+    }
 }
