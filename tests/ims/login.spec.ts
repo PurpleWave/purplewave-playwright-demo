@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.only('test', async ({ page }) => {
     // this login pattern takes ~26 seconds to execute
     await page.goto('https://qa.cliquidator.info/c/');
-    await page.locator('input[name="username"]').fill('');
+    await page.locator('input[name="username"]').fill('nick.wilcox');
     await page.locator('input[name="password"]').fill('');
     await page.getByRole('button', { name: 'Sign in' }).click();
 

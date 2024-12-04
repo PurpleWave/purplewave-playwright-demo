@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { NavigationPage } from '../../pages/fe/Navigation.page';
 import { LoginPage } from '../../pages/fe/Login.page';
 import { RegisterPage } from '../../pages/fe/Register.page';
-import { UtilitiesPage } from '../../utils/Utilities.page'; // Import UtilitiesPage
+import { UtilitiesPage } from '../../pages/fe/Utilities.page'; // Import UtilitiesPage
 
 // TEST
 

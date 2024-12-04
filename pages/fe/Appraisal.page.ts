@@ -29,6 +29,10 @@ export class AppraisalPage {
     public emailErrorText: Locator;
     public phoneErrorText: Locator;
 
+    /**
+     * Creates a new instance of the AppraisalPage class.
+     * @param page - The Playwright page object.
+     */
     constructor(page: Page) {
         this.page = page;
         this.requestQuoteLink = this.page.getByRole('link', { name: 'Request a quote now!' });

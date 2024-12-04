@@ -19,6 +19,10 @@ export class AboutPage {
     private learnMoreAboutAppraisals: Locator;
     private learnMoreAboutBuying: Locator;
 
+    /**
+     * Creates a new instance of the AboutPage class.
+     * @param page - The Playwright page object.
+     */
     constructor(page: Page) {
         this.page = page;
 

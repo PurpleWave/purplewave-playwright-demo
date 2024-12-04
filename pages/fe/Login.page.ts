@@ -9,10 +9,14 @@ export class LoginPage {
   // Locators are added as class properties
   public registerHere: Locator;
 
-    constructor(page: Page) {
-        this.page = page;
+    /**
+     * Creates a new instance of the LoginPage class.
+     * @param page - The Playwright page object.
+     */
+  constructor(page: Page) {
+    this.page = page;
 
-        // This is where you initialize the locators
-        this.registerHere = this.page.locator('role=link[name="Register here."]');
+    // This is where you initialize the locators
+    this.registerHere = this.page.locator('role=link[name="Register here."]');
     }
 }

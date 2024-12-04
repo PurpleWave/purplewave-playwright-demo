@@ -19,6 +19,10 @@ export class StaffPage {
     private staffDirectory: Locator;
     private searchStaffField: Locator;
 
+    /**
+     * Creates a new instance of the StaffPage class.
+     * @param page - The Playwright page object.
+     */
     constructor(page: Page) {
         this.page = page;
         // Example locator

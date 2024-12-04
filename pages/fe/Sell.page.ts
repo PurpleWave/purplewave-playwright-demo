@@ -27,6 +27,10 @@ export class SellPage{
     public termsCheckbox: Locator;
     // TODO: CAPTCHA STUFF NEEDS BYPASS LOCATORS/METHODS
 
+    /**
+     * Creates a new instance of the SellPage class.
+     * @param page - The Playwright page object.
+     */
     constructor(page: Page) {
         this.page = page;
 

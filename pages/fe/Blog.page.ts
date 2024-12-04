@@ -9,7 +9,10 @@ export class BlogPage {
     readonly exampleLocator: Locator;
     
     
-
+    /**
+     * Creates a new instance of the BlogPage class.
+     * @param page - The Playwright page object.
+     */
     constructor(page: Page) {
         this.page = page;
     

@@ -14,6 +14,10 @@ export class BuyPage {
     public biddingAndBuyingFAQ: Locator;
     public purpleWaveAuctionBiddingFAQ: Locator;
 
+    /**
+     * Creates a new instance of the BuyPage class.
+     * @param page - The Playwright page object.
+     */
     constructor(page: Page) {
         this.page = page;
         // Example locator using the Playwright locator method

@@ -16,7 +16,10 @@ export class RegisterPage {
     public preferredLanguageDropdown: Locator;
     //
     public copartOption: Locator;
-
+    /**
+     * Creates a new instance of the RegisterPage class.
+     * @param page - The Playwright page object.
+     */
     constructor(page: Page) {
         this.page = page;
         
