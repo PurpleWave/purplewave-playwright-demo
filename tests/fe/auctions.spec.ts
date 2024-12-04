@@ -2,10 +2,11 @@ import { test, expect } from '@playwright/test';
 import { NavigationPage } from '../../pages/fe/Navigation.page';
 import { UtilitiesPage } from '../../pages/fe/Utilities.page';
 
-test.describe('Core Smoke Test', () => {
+test.describe('Auction Page Core Smoke Test', () => {
     let navigate: NavigationPage;
     let utilities: UtilitiesPage;
-
+    const pixelDiff = 100;
+    
     test.beforeEach(async ({ page }, testInfo ) => {
 
         // Initialize the page objects before each test
@@ -13,23 +14,34 @@ test.describe('Core Smoke Test', () => {
         utilities = new UtilitiesPage(page);
 
         utilities.addTestMetadata(testInfo, {
-            groups: ['CoreSmoke'],
-            issues: ['']
+            groups: ['CoreSmoke']
         });
 
         await page.goto('/');
         await page.waitForLoadState();
     });
 
-    test('TEST DESCRIPTION', async ({ page }, testInfo ) => {
+    test.only('compare screen captures', async ({ page }, testInfo ) => {
         // Test logic goes here
         utilities.addTestMetadata(testInfo, {
-            groups: [''],
-            issues: ['']
+            groups: ['']
         });
-
-
         // Add test logic here
         // Example: await expect(page).toHaveTitle(/expectedTitle/);}
+        await utilities.waitForIntercomButtonToBeVisible();
+        await utilities.hideIntercomIfVisible();
+
+        // Capture and compare screenshot
+        await expect(page).toHaveScreenshot('auctions.png', {
+            timeout: 10000,
+            mask: [
+                page.locator('#calendar-banner'),
+                page.locator("//*[contains(@class, 'panel-title')]"),
+                page.locator("//*[contains(@class, 'caroufredsel_wrapper')]"), // TODO: GROSS OLD HABITS
+                page.locator('#hpa')
+            ],
+            fullPage: true,
+            maxDiffPixels: pixelDiff, // Allow small differences
+        });
     });
 });

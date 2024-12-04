@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.only('test', async ({ page }) => {
+test('test', async ({ page }) => {
     // this login pattern takes ~26 seconds to execute
     await page.goto('https://qa.cliquidator.info/c/');
     await page.locator('input[name="username"]').fill('nick.wilcox');
