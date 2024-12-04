@@ -7,6 +7,7 @@ import { Page, Locator } from 'playwright';
 export class AppraisalPage {
     private page: Page;
 
+    // Declare locators
     public requestQuoteLink: Locator;
     public nameInput: Locator;
     public addressInput: Locator;
@@ -35,6 +36,8 @@ export class AppraisalPage {
      */
     constructor(page: Page) {
         this.page = page;
+
+        // Initialize locators
         this.requestQuoteLink = this.page.getByRole('link', { name: 'Request a quote now!' });
         this.nameInput = this.page.getByTestId('appraisals_name').getByLabel('Name');
         this.addressInput = this.page.getByLabel('Address');
@@ -49,7 +52,8 @@ export class AppraisalPage {
         this.companyNameInput = this.page.getByLabel('Company Name [optional]');
         this.additionalInfoInput = this.page.getByLabel('Additional Information [');
         this.submitButton = this.page.getByRole('button', { name: 'Submit' });
-        // Initialize error message locators
+        
+        // Error message locators
         this.streetErrorText = this.page.getByText('Please provide your street.');
         this.cityErrorText = this.page.getByText('Please provide your city.');
         this.postalCodeErrorText = this.page.getByText('Please provide your postal');
@@ -57,21 +61,4 @@ export class AppraisalPage {
         this.phoneErrorText = this.page.getByText('Please provide your phone');
 
     }
-
-//     /**
-//      * Example method to interact with the example element on the page.
-//      * @param {string} text - The text to input into the example element.
-//      */
-//     async exampleMethod(text: string) {
-//         await this.exampleLocator.fill(text);  // Use the locator to fill the field
-//         await this.exampleLocator.click();     // Example action: click the element
-//     }
-
-//   /**
-//    * Example method to retrieve text from an element.
-//    * @returns {Promise<string>} - The text content of the example element.
-//    */
-//   async getExampleText(): Promise<string> {
-//     return await this.exampleLocator.textContent();
-//   }
 }

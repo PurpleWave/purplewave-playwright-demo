@@ -29,5 +29,4 @@ export class ResultsPage {
         // TODO: add Locators for Recent Auctions lists
         // TODO: add Locators for year and month (2023 and 2024)
     }
-
 }

@@ -7,7 +7,6 @@ export class FooterPage{
     private page: Page;
 
     // Declare locators
-    private exampleLocator: Locator;
 
     /**
      * Creates a new instance of the FooterPage class.
@@ -17,7 +16,6 @@ export class FooterPage{
         this.page = page;
         
         // Initialize locators    
-        // Example locator using the Playwright locator method
-        this.exampleLocator = page.locator('#example-element');
+
     }
 }

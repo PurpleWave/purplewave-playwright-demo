@@ -6,6 +6,7 @@ import { Page, Locator } from 'playwright';
 export class AuctionPage {
     private page: Page;
 
+    // Declare locators
     // Top to bottom
     public mainCalendarBanner: Locator;
 
@@ -25,6 +26,7 @@ export class AuctionPage {
     constructor(page: Page) {
         this.page = page;
 
+        // Initialize locators
         // Top to bottom
         this.mainCalendarBanner = this.page.locator('#calendar-banner')     // TODO: GROSS
 

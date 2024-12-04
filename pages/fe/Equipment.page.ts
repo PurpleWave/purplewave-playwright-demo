@@ -5,6 +5,7 @@ import { Page, Locator } from 'playwright';
  */
 export class EquipmentPage {
     private page: Page;
+    // Declare locators
     
     /**
      * Creates a new instance of the Equipment class.
@@ -12,5 +13,7 @@ export class EquipmentPage {
      */
     constructor(page: Page) {
         this.page = page;
+
+        // Initialize locators
     }
 }

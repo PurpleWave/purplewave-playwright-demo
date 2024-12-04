@@ -5,8 +5,8 @@ import { Page, Locator } from 'playwright';
  */
 export class RegisterPage {
     private page: Page;  
-  
-    // Locators are added as class properties
+    
+    // Declare locators
     public loginOrRegister: Locator;
     public firstNameInput: Locator;
     public lastNameInput: Locator;
@@ -23,7 +23,7 @@ export class RegisterPage {
     constructor(page: Page) {
         this.page = page;
         
-        // Initializing locators
+        // Initialize locators
         this.loginOrRegister = this.page.locator('role=button[name="Login or Register"]');
         this.firstNameInput = this.page.locator('label:text("First Name")');
         this.lastNameInput = this.page.locator('label:text("Last Name")');

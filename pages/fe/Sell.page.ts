@@ -6,6 +6,7 @@ import { Page, Locator } from 'playwright';
 export class SellPage{
     private page: Page;
     
+    // Declare locators
     // Form locators
     public firstNameInput: Locator;
     public lastNameInput: Locator;
@@ -34,7 +35,7 @@ export class SellPage{
     constructor(page: Page) {
         this.page = page;
 
-        // Example locator using the Playwright locator method
+        // Initialize locators
         // Form locators
         this.firstNameInput = this.page.locator('input[name="firstName"]');
         this.lastNameInput = this.page.locator('input[name="lastName"]');
@@ -56,20 +57,4 @@ export class SellPage{
         this.termsCheckbox = this.page.getByRole('checkbox');
         // TODO: CAPTCHA STUFF NEEDS BYPASS LOCATORS/METHODS
     }
-    // /**
-    // * Example method to interact with the example element on the page.
-    // * @param {string} text - The text to input into the example element.
-    // */
-    // async exampleMethod(text: string) {
-    //     await this.exampleLocator.fill(text);  // Use the locator to fill the field
-    //     await this.exampleLocator.click();     // Example action: click the element
-    // }
-
-    // /**
-    // * Example method to retrieve text from an element.
-    // * @returns {Promise<string>} - The text content of the example element.
-    // */
-    // async getExampleText(): Promise<string> {
-    //     return await this.exampleLocator.textContent();
-    // }
 }

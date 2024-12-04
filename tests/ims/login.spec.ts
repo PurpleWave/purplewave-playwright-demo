@@ -13,4 +13,5 @@ test.only('test', async ({ page }) => {
     
     await page.goto('https://ims-qa.cliquidator.info/home');
     await page.waitForLoadState('load');
+    await page.waitForTimeout(7000);
 });

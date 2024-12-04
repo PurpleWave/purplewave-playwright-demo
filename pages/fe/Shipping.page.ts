@@ -6,7 +6,7 @@ import { Page, Locator } from 'playwright';
 export class ShippingPage {
     private page: Page;
 
-    readonly exampleLocator: Locator;
+    // Declare locators
 
     /**
      * Creates a new instance of the ShippingPage class.
@@ -14,9 +14,8 @@ export class ShippingPage {
      */
     constructor(page: Page) {
         this.page = page;
-        
-        // Example locator using the Playwright locator method
-        this.exampleLocator = page.locator('#example-element');
+    
+        // Initialize locators
     }
     
 }
