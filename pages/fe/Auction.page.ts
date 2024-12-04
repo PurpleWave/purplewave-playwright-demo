@@ -38,7 +38,5 @@ export class AuctionPage {
         this.viewAllUpcomingItemsLink = this.page.getByRole('link', { name: 'View ALL Upcoming Items' });
         this.logInLink = this.page.getByRole('link', { name: 'Log In' });
         this.registerLink = this.page.getByRole('link', { name: 'Register' });
-
     }
-
 }

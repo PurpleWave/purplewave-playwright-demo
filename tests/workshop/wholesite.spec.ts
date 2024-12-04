@@ -40,10 +40,6 @@ test.describe('Registration Flow', () => {
             issues: ['JIRA-456']    // a member of both 1234 and 456
         });
       
-        utilities.highlightAllLocators(auction)
-        // Wait to observe the highlights before the test ends
-        await page.waitForTimeout(3000);
-      });
 
     test('should allow a user to register with valid details', async ({ page }, testInfo) => {
         utilities.addTestMetadata(testInfo, {
@@ -103,4 +99,5 @@ test.describe('Registration Flow', () => {
         // user flow?
     });
 
+});
 });
