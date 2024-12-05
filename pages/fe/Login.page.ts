@@ -8,6 +8,9 @@ export class LoginPage {
 
     // Declare locators
     public registerHere: Locator;
+    public emailInput: Locator;
+    public passwordInput: Locator;
+    public loginButton: Locator;
 
     /**
      * Creates a new instance of the LoginPage class.
@@ -18,5 +21,8 @@ export class LoginPage {
 
         // Initialize locators
         this.registerHere = this.page.locator('role=link[name="Register here."]');
+        this.emailInput = this.page.getByLabel('Email or Account Id');
+        this.passwordInput = this.page.getByLabel('Password', { exact: true });
+        this.loginButton = this.page.getByRole('button', { name: 'Login', exact: true });
     }
 }
