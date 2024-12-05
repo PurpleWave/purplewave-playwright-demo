@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@axe-core/playwright": "^4.10.1",
+    "@directus/sdk": "^18.0.1",
     "dotenv": "^16.4.5",
     "fast-xml-parser": "^4.5.0",
     "get-port": "^7.1.0",

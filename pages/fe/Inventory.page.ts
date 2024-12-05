@@ -1,7 +1,7 @@
 import {Locator, Page} from 'playwright';
 
 export class InventoryPage {
-    private page: Page;
+    protected page: Page;
 
 
     // Top Banner

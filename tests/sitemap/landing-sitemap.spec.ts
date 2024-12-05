@@ -1,9 +1,11 @@
 import {expect, test} from '@playwright/test';
 import {XMLParser} from 'fast-xml-parser';
 import {InventoryPage} from '../../pages/fe/Inventory.page';
+import {authentication, createDirectus, readItems, rest} from '@directus/sdk';
 
+const client = createDirectus('http://directus.example.com');
 test('Test all URLs in sitemap', async ({page}) => {
-    test.setTimeout(3600000); // 10 mins
+    test.setTimeout(3600000); // 60 mins
 
     // Dynamically import node-fetch
     const fetch = (await import('node-fetch')).default;
@@ -31,14 +33,16 @@ test('Test all URLs in sitemap', async ({page}) => {
         total++;
         const inventoryPage = new InventoryPage(page);
         console.log(url);
+
         await page.goto(url);
         await page.waitForLoadState("domcontentloaded");
-        await expect(inventoryPage.heroImage).toBeVisible({timeout: 15000});
+
         await expect(inventoryPage.h1Title).toBeVisible();
         await expect(inventoryPage.description).toBeVisible();
         await expect(inventoryPage.registerButton).toBeVisible();
 
-        await expect(inventoryPage.homeBreadcrumb).toBeVisible(); // TODO: Test href attribute in the next line
+        // TODO: Test href attribute in the next line
+        await expect(inventoryPage.homeBreadcrumb).toBeVisible();
         await expect(inventoryPage.inventoryBreadcrumb).toHaveText(await inventoryPage.h1Title.textContent());
         await expect(inventoryPage.inventoryBreadcrumb).toHaveAttribute('href', expect.stringContaining(page.url()));
 
@@ -46,6 +50,8 @@ test('Test all URLs in sitemap', async ({page}) => {
         await expect(inventoryPage.recommendedForYouText).toBeVisible();
         await expect(inventoryPage.recommendedItem).toBeVisible();
 
+        // TODO: Investigate flakiness
+        await expect(inventoryPage.heroImage).toBeVisible({timeout: 15000});
 
         // If no items are found, then skip the rest of the checks
         if (await inventoryPage.noItemsFoundMessage.isVisible()) {
@@ -70,7 +76,31 @@ test('Test all URLs in sitemap', async ({page}) => {
 });
 
 test('Verify landing pages against Directus', async ({page}) => {
+    const client = createDirectus('https://pw.directus.app/').with(authentication()).with(rest());
+    //
+    await client.setToken('');
+    const landingPages = await client.request(readItems('Inventory_Pages'));
 
+    let allItems = [];
+    let p = 1;
+    const limit = 1000;
+
+    while (p < 3) {
+        console.log(p);
+        const response = await client.request(readItems('Inventory_Pages', {
+            limit,
+            p,
+        }));
+
+        if (response.length === 0) {
+            break;
+        }
+
+        allItems = allItems.concat(response);
+        p++;
+    }
+
+    console.log(allItems);
 
     }
 );
