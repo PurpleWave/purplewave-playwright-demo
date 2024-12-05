@@ -6,8 +6,7 @@ import { Page, Locator } from 'playwright';
 export class StaffPage {
     private page: Page;
     
-    readonly exampleLocator: Locator;
-
+    // Declare locators
     // side menu
     private sideMenuAboutUsLink: Locator;
     private sideMenuStaffLink: Locator;
@@ -19,10 +18,14 @@ export class StaffPage {
     private staffDirectory: Locator;
     private searchStaffField: Locator;
 
+    /**
+     * Creates a new instance of the StaffPage class.
+     * @param page - The Playwright page object.
+     */
     constructor(page: Page) {
         this.page = page;
-        // Example locator
-        this.exampleLocator = page.locator('#example-element');
+        // Initialize locators
+
         this.sideMenuAboutUsLink = page.getByRole('link', { name: 'About Us' });
         this.sideMenuStaffLink = page.getByRole('link', { name: 'Staff' });
         this.sideMenuTerritoryMapLink = page.getByRole('link', { name: 'Territory Map' });
@@ -34,6 +37,7 @@ export class StaffPage {
         this.searchStaffField = page.locator('#search_staff');
     }
 
+    // TODO: VERIFY THIS IS REALLY WHAT WE WANT
     /**
      * Method to search for a staff member.
      * @param {string} name - The name of the staff member.

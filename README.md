@@ -115,7 +115,7 @@ ENV=stage APP=fe npx playwright test
 Run the smoke tests to verify all pages:
 
 ```bash
-ENV=stage APP=fe npx playwright --grep '@group:smoke'
+ENV=stage APP=fe npx playwright --grep @smoke
 ```
 
 ### JIRA/X-RAY Issue ID
@@ -124,6 +124,17 @@ Run tests by Jira issue
 
 ```bash
 ENV=stage APP=fe npx playwright --grep '@issue: (JIRA-123|JIRA-5678)'
+```
+
+### Run Playwright with Debug UI
+```bash
+ENV=stage APP=fe npx playwright --ui
+```
+
+Run tests with Lighthouse analytics:
+
+```bash
+ENV=stage APP=fe npm run test:lighthouse
 ```
 
 ### Google Lighthouse Audits

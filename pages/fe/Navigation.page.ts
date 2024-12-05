@@ -99,7 +99,14 @@ export class NavigationPage extends HeaderPage {
     public constructionTrucksLink: Locator;
     public truckPartsAndAccessoriesLink: Locator;
     public trucksLink: Locator;
+
+    /**
+     * Creates a new instance of the NavigationPage class.
+     * @param page - The Playwright page object.
+     */
     constructor(page: Page) {
         super(page);
+        // Initialize locators
+        
     }
 }

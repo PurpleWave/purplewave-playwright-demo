@@ -6,6 +6,7 @@ import { Page, Locator } from 'playwright';
 export class AuctionPage {
     private page: Page;
 
+    // Declare locators
     // Top to bottom
     public mainCalendarBanner: Locator;
 
@@ -18,9 +19,14 @@ export class AuctionPage {
     public logInLink: Locator; // New locator
     public registerLink: Locator; // New locator
 
+    /**
+     * Creates a new instance of the AuctionPage class.
+     * @param page - The Playwright page object.
+     */
     constructor(page: Page) {
         this.page = page;
 
+        // Initialize locators
         // Top to bottom
         this.mainCalendarBanner = this.page.locator('#calendar-banner')     // TODO: GROSS
 
@@ -32,7 +38,5 @@ export class AuctionPage {
         this.viewAllUpcomingItemsLink = this.page.getByRole('link', { name: 'View ALL Upcoming Items' });
         this.logInLink = this.page.getByRole('link', { name: 'Log In' });
         this.registerLink = this.page.getByRole('link', { name: 'Register' });
-
     }
-
 }
