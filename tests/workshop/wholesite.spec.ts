@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { NavigationPage } from '../../pages/fe/Navigation.page';
 import { LoginPage } from '../../pages/fe/Login.page';
 import { RegisterPage } from '../../pages/fe/Register.page';
-import { UtilitiesPage } from '../../utils/Utilities.page'; // Import UtilitiesPage
+import { UtilitiesPage } from '../../pages/fe/Utilities.page'; // Import UtilitiesPage
 
 // TEST
 
@@ -40,10 +40,6 @@ test.describe('Registration Flow', () => {
             issues: ['JIRA-456']    // a member of both 1234 and 456
         });
       
-        utilities.highlightAllLocators(auction)
-        // Wait to observe the highlights before the test ends
-        await page.waitForTimeout(3000);
-      });
 
     test('should allow a user to register with valid details', async ({ page }, testInfo) => {
         utilities.addTestMetadata(testInfo, {
@@ -103,4 +99,5 @@ test.describe('Registration Flow', () => {
         // user flow?
     });
 
+});
 });

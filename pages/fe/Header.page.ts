@@ -5,7 +5,9 @@ import { Page, Locator } from 'playwright';
  */
 export class HeaderPage {
     private page: Page;
+    // Declare locators
 
+    // Header locators
     public loginOrRegister: Locator;
     public contactUsLink: Locator;
     public allItemsLink: Locator;
@@ -26,12 +28,16 @@ export class HeaderPage {
     public shippingLink: Locator;
     public aboutLink: Locator;  
 
+    /**
+     * Creates a new instance of the HeaderPage class.
+     * @param page - The Playwright page object.
+     */
     constructor(page: Page) {
         this.page = page;
 
+        // Initialize locators
         this.loginOrRegister = this.page.locator('role=button[name="Login or Register"]');
         this.contactUsLink = this.page.locator('role=link[name="Contact Us"]');
-
 
         // Initialize locators for each menu item
         this.homeLogo = this.page.locator('#header_logo');  // TODO: GROSS
@@ -46,67 +52,11 @@ export class HeaderPage {
     }
 
     /**
-     * Click the given link text.
+     * Experimental method to click a link by its text.
      * @param linkText Text of the link to be clicked
      */
     public async clickLink(linkText: string): Promise<void> {
         const link = this.page.locator(`role=link[name="${linkText}"]`);
         await link.click();
-    }
-
-    /**
-     * Click the "Auctions" link
-     */
-    public async clickAuctions(): Promise<void> {
-        await this.auctionsLink.click();
-    }
-
-    /**
-     * Click the "Buy" link
-     */
-    public async clickBuy(): Promise<void> {
-        await this.buyLink.click();
-    }
-
-    /**
-     * Click the "Sell" link
-     */
-    public async clickSell(): Promise<void> {
-        await this.sellLink.click();
-    }
-
-    /**
-     * Click the "Results" link
-     */
-    public async clickResults(): Promise<void> {
-        await this.resultsLink.click();
-    }
-
-    /**
-     * Click the "Equipment" text
-     */
-    public async clickEquipment(): Promise<void> {
-        await this.equipmentText.click();
-    }
-
-    /**
-     * Click the "Appraisals" link
-     */
-    public async clickAppraisals(): Promise<void> {
-        await this.appraisalsLink.click();
-    }
-
-    /**
-     * Click the "Shipping" link
-     */
-    public async clickShipping(): Promise<void> {
-        await this.shippingLink.click();
-    }
-
-    /**
-     * Click the "About" link
-     */
-    public async clickAbout(): Promise<void> {
-        await this.aboutLink.click();
     }
 }
