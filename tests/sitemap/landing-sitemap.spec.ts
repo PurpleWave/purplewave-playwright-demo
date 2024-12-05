@@ -57,9 +57,9 @@ test('Test all URLs in sitemap', async ({page}) => {
         await expect(inventoryPage.auctionDateAccordion).toBeVisible();
         await expect(inventoryPage.zipRadiusAccordion).toBeVisible();
         // TODO: Needs logic for ignoring certain accordions based on the inventory or page type
-      //  await expect(inventoryPage.makeAccordion).toBeVisible();
-      //  await expect(inventoryPage.yearAccordion).toBeVisible();
-      //  await expect(inventoryPage.stateAccordion).toBeVisible();
+        //  await expect(inventoryPage.makeAccordion).toBeVisible();
+        //  await expect(inventoryPage.yearAccordion).toBeVisible();
+        //  await expect(inventoryPage.stateAccordion).toBeVisible();
         await expect(inventoryPage.cityAccordion).toBeVisible();
         await expect(inventoryPage.currentBidAccordion).toBeVisible();
 
