@@ -13,18 +13,14 @@ test.describe('Auction Page Core Smoke Test', () => {
         navigate = new NavigationPage(page);
         utilities = new UtilitiesPage(page);
 
-        utilities.addTestMetadata(testInfo, {
-            groups: ['CoreSmoke']
-        });
-
-        await page.goto('/');
-        await page.waitForLoadState();
+        // await page.goto('/');
+        // await page.waitForLoadState();
     });
 
-    test.only('compare screen captures', async ({ page }, testInfo ) => {
+    test.skip('compare screen captures', async ({ page }, testInfo ) => {
         // Test logic goes here
         utilities.addTestMetadata(testInfo, {
-            groups: ['']
+            groups: ['CoreSmoke']
         });
         // Add test logic here
         // Example: await expect(page).toHaveTitle(/expectedTitle/);}
@@ -44,4 +40,18 @@ test.describe('Auction Page Core Smoke Test', () => {
             maxDiffPixels: pixelDiff, // Allow small differences
         });
     });
+    test.only('has title', 
+        {tag: '@smoke'},
+        async ({ page, baseURL }) => {
+        
+        await page.goto('https://playwright.dev/');
+        // TEST CODE
+      
+      
+      
+        console.log(`Base URL: ${baseURL}`);
+        console.log(`Env URL: ${process.env.BASE_URL}`);
+        // Expect a title "to contain" a substring.
+        await expect(page).toHaveTitle(/Playwright/);
+      });
 });
