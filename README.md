@@ -115,7 +115,7 @@ ENV=stage APP=fe npx playwright test
 Run the smoke tests to verify all pages:
 
 ```bash
-ENV=stage APP=fe npx playwright --grep '@group:smoke'
+ENV=stage APP=fe npx playwright --grep @smoke
 ```
 
 ### JIRA/X-RAY Issue ID
