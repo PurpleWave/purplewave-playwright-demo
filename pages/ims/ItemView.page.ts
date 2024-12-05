@@ -20,13 +20,6 @@ export class ItemViewPage {
     public saveFileOrderButton: Locator;
     
     // Details Tab locators
-    public hideFormButton: Locator;
-    public viewHistoryButton: Locator;
-    public submittedByFullText: Locator;
-    public submittedByLabel: Locator;
-    public lastUpdatedByLabel: Locator;
-    public cancelButton: Locator;
-    public saveButton: Locator;
     public assetPromotionCheckbox: Locator;
     public icnLabel: Locator;
     public copartLotNumberLabel: Locator;
@@ -78,12 +71,6 @@ export class ItemViewPage {
         this.saveFileOrderButton = this.page.getByRole('button', { name: 'Save File Order' });
         
         // Details Tab locators
-        this.hideFormButton = this.page.getByRole('button', { name: 'Hide Form' });
-        this.viewHistoryButton = this.page.getByRole('button', { name: 'View History' });
-        this.submittedByLabel = this.page.getByText('Submitted By:');
-        this.lastUpdatedByLabel = this.page.getByText('Last Updated By:');
-        this.cancelButton = this.page.locator('div').filter({ hasText: /^Cancel$/ });
-        this.saveButton = this.page.locator('div').filter({ hasText: /^Save$/ }).nth(1);
         this.assetPromotionCheckbox = this.page.getByLabel('Asset Promotion');
         this.icnLabel = this.page.getByLabel('ICN *');
         this.copartLotNumberLabel = this.page.getByLabel('Copart Lot Number');
