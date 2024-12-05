@@ -1,8 +1,5 @@
-import {Page, Locator} from 'playwright';
+import {Locator, Page} from 'playwright';
 
-/**
- * EquipmentPage class for interacting with the equipment page.
- */
 export class InventoryPage {
     private page: Page;
 

@@ -1,9 +1,9 @@
-import {test, expect} from '@playwright/test';
+import {expect, test} from '@playwright/test';
 import {XMLParser} from 'fast-xml-parser';
 import {InventoryPage} from '../../pages/fe/Inventory.page';
 
 test('Test all URLs in sitemap', async ({page}) => {
-    test.setTimeout(600000); // 10 mins
+    test.setTimeout(3600000); // 10 mins
 
     // Dynamically import node-fetch
     const fetch = (await import('node-fetch')).default;
@@ -26,7 +26,9 @@ test('Test all URLs in sitemap', async ({page}) => {
         ? urlset.url.map((u: any) => u.loc)
         : [urlset.url.loc]; // Handle a single <url> element scenario
 
+    let total = 0;
     for (var url of urls) {
+        total++;
         const inventoryPage = new InventoryPage(page);
         console.log(url);
         await page.goto(url);
@@ -54,6 +56,7 @@ test('Test all URLs in sitemap', async ({page}) => {
         await expect(inventoryPage.itemsPerPageDropdown).toBeVisible();
         await expect(inventoryPage.auctionDateAccordion).toBeVisible();
         await expect(inventoryPage.zipRadiusAccordion).toBeVisible();
+        // TODO: Needs logic for ignoring certain accordions based on the inventory or page type
       //  await expect(inventoryPage.makeAccordion).toBeVisible();
       //  await expect(inventoryPage.yearAccordion).toBeVisible();
       //  await expect(inventoryPage.stateAccordion).toBeVisible();
@@ -62,4 +65,12 @@ test('Test all URLs in sitemap', async ({page}) => {
 
     }
 
+    console.log("Total: " + total);
+
 });
+
+test('Verify landing pages against Directus', async ({page}) => {
+
+
+    }
+);
