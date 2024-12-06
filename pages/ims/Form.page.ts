@@ -32,10 +32,5 @@ export class FormPage extends DataCapturePage{
         this.cancelBottomButton = this.page.locator('div').filter({ hasText: /^Cancel$/ }).nth(1);
         this.statusBottomDropdown = this.page.locator('select[name="status"]').nth(1);
         this.saveBottomDropdown = this.page.locator('div').filter({ hasText: /^Save$/ }).nth(3);
-
-
     }
-
-
-
 }
